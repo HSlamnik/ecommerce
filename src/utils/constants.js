@@ -4,7 +4,7 @@ export const SHOP_SECTIONS = [
     title: 'HATS',
     subtitle: 'SHOP NOW',
     isWideDiv: false,
-    linkUrl: 'shop/hats',
+    linkUrl: '/hats',
     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
   },
   {
@@ -12,7 +12,7 @@ export const SHOP_SECTIONS = [
     title: 'JACKETS',
     subtitle: 'SHOP NOW',
     isWideDiv: false,
-    linkUrl: 'shop/jackets',
+    linkUrl: '/jackets',
     imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
   },
   {
@@ -20,7 +20,7 @@ export const SHOP_SECTIONS = [
     title: 'SNEAKERS',
     subtitle: 'SHOP NOW',
     isWideDiv: false,
-    linkUrl: 'shop/sneakers',
+    linkUrl: '/sneakers',
     imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
   },
   {
@@ -28,7 +28,7 @@ export const SHOP_SECTIONS = [
     title: 'WOMENS',
     subtitle: 'SHOP NOW',
     isWideDiv: true,
-    linkUrl: 'shop/womens',
+    linkUrl: '/womens',
     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
   },
   {
@@ -36,7 +36,7 @@ export const SHOP_SECTIONS = [
     title: 'MENS',
     subtitle: 'SHOP NOW',
     isWideDiv: true,
-    linkUrl: 'shop/mens',
+    linkUrl: '/mens',
     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
   },
 ];

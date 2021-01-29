@@ -1,18 +1,20 @@
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-const MenuItem = ({ sections }) => {
+const MenuItem = ({ sections, history }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.home}>
       <div className={classes.menu}>
-        {sections.map(({ title, subtitle, id, imageUrl, isWideDiv }) => (
+        {sections.map(({ title, subtitle, id, imageUrl, isWideDiv, linkUrl }) => (
           <div
             key={id}
             className={classes.menuItem}
             style={{
               height: isWideDiv && '380px',
             }}
+            onClick={() => history.push(`${linkUrl}`)}
           >
             <div className={classes.imageBackground} style={{ backgroundImage: `url(${imageUrl})` }} />
             <div className={classes.content}>
@@ -103,4 +105,4 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default MenuItem;
+export default withRouter(MenuItem);
