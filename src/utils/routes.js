@@ -3,7 +3,12 @@ import { matchPath } from 'react-router-dom';
 import { generatePath } from 'react-router';
 
 const Home = lazy(() => import('components/Home/Home'));
+const Shop = lazy(() => import('components/Shop/Shop'));
 const Hats = lazy(() => import('components/Hats/Hats'));
+const Jackets = lazy(() => import('components/Jackets/Jackets'));
+const Sneakers = lazy(() => import('components/Sneakers/Sneakers'));
+const Womens = lazy(() => import('components/Womens/Womens'));
+const Mens = lazy(() => import('components/Mens/Mens'));
 
 const routes = {
   HOME: {
@@ -13,7 +18,19 @@ const routes = {
     component: Home,
     config: {
       topNavigation: {
-        name: 'Home',
+        name: 'HOME',
+        isButtonLink: true,
+      },
+    },
+  },
+  SHOP: {
+    id: 'SHOP',
+    path: '/shop',
+    exact: true,
+    component: Shop,
+    config: {
+      topNavigation: {
+        name: 'SHOP',
         isButtonLink: true,
       },
     },
@@ -23,6 +40,30 @@ const routes = {
     path: '/hats',
     exact: true,
     component: Hats,
+  },
+  JACKETS: {
+    id: 'JACKETS',
+    path: '/jackets',
+    exact: true,
+    component: Jackets,
+  },
+  SNEAKERS: {
+    id: 'SNEAKERS',
+    path: '/sneakers',
+    exact: true,
+    component: Sneakers,
+  },
+  WOMENS: {
+    id: 'WOMENS',
+    path: '/womens',
+    exact: true,
+    component: Womens,
+  },
+  MENS: {
+    id: 'MENS',
+    path: '/mens',
+    exact: true,
+    component: Mens,
   },
 };
 
