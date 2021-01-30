@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => {
     content: {
       flex: '1 1 0%',
       backgroundColor: '#ffffff',
-      padding: '20px 80px',
+      padding: '20px 60px',
     },
   };
 });

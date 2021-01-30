@@ -5,7 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 
 import Navigation from 'components/Navigation/Navigation';
-import Logo from 'components/Logo/Logo';
+import { ReactComponent as Logo } from 'components/Logo/Logo.svg';
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -22,7 +22,9 @@ const Header = () => {
                   {showMobileMenu ? <CloseOutlinedIcon /> : <MenuIcon />}
                 </IconButton>
               </div>
-              <Logo />
+              <div className={classes.logoContainer}>
+                <Logo />
+              </div>
             </div>
             <div className={classes.rightContainer}>
               <Navigation />
@@ -71,6 +73,12 @@ const useStyles = makeStyles((theme) => ({
 
   leftContainer: {
     display: 'flex',
+  },
+
+  logoContainer: {
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
   },
 
   rightContainer: {

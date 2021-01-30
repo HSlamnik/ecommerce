@@ -65,27 +65,54 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textDecoration: 'none',
+    width: '145px',
+    height: '48px',
+    borderRadius: '8px',
+    border: 'solid 2px #606060',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    fontStretch: 'normal',
+    fontStyle: 'normal',
+    lineHeight: 1.19,
+    letterSpacing: 'normal',
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+      margin: '2% 3.5%',
+    },
+
+    '&:hover': {
+      border: 'solid 2px #989898',
+      '& $navItem':{
+        color: '#989898',
+      }
+    },
+
+    '&:focus': {
+      '& $navItem':{
+        color: '#989898',
+      }
+    },
+  },
+
   navItem: {
     display: 'inline-flex',
     alignItems: 'center',
     borderColor: 'transparent',
-    fontSize: '16px',
+    fontSize: '20px',
     fontWeight: 'normal',
     fontStretch: 'normal',
     fontStyle: 'normal',
     lineHeight: 1.19,
     letterSpacing: 'normal',
     textAlign: 'center',
-    color: '#183b56',
+    color: '#000000',
     textDecoration: 'none',
-
-    '&:hover': {
-      color: '#1565d8',
-    },
-
-    '&:focus': {
-      color: '#1565d8',
-    },
   },
 
   mobileMenuContainer: {
@@ -121,28 +148,6 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up('sm')]: {
       paddingLeft: '1.25rem',
-    },
-  },
-
-  buttonContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textDecoration: 'none',
-    width: '145px',
-    height: '48px',
-    borderRadius: '8px',
-    border: 'solid 2px #1565d8',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    fontStretch: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 1.19,
-    letterSpacing: 'normal',
-    [theme.breakpoints.down('md')]: {
-      width: '90%',
-      margin: '2% 3.5%',
     },
   },
 }));
