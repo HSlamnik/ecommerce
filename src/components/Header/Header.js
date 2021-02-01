@@ -7,7 +7,7 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import Navigation from 'components/Navigation/Navigation';
 import { ReactComponent as Logo } from 'components/Logo/Logo.svg';
 
-const Header = () => {
+const Header = ({ currentUser }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const classes = useStyles({ showMobileMenu });
 
@@ -27,12 +27,12 @@ const Header = () => {
               </div>
             </div>
             <div className={classes.rightContainer}>
-              <Navigation />
+              <Navigation currentUser={currentUser} />
             </div>
           </div>
         </div>
         <div className={classes.mobileMenu}>
-          <Navigation isMobileMenu={true} />
+          <Navigation currentUser={currentUser} isMobileMenu={true} />
         </div>
       </nav>
     </Box>

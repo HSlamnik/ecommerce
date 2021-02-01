@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import { auth } from 'firebase/FirebaseUtils';
 import routes from 'utils/routes';
 
-const Navigation = ({ isMobileMenu }) => {
+const Navigation = ({ isMobileMenu, currentUser }) => {
   const classes = useStyles();
   const NAVIGATION_ITEMS = Object.values(routes)
     .map((value) => {
@@ -22,7 +23,19 @@ const Navigation = ({ isMobileMenu }) => {
         <div className={classes.mobileMenuContainer}>
           {NAVIGATION_ITEMS.map((item, index) => {
             if (item.isButtonLink) {
-              return (
+              return item.isUserRelated ? (
+                currentUser ? (
+                  <div className={classes.buttonContainer} onClick={() => auth.signOut()}>
+                    <div style={{ cursor: 'pointer' }} className={classes.navItem}>
+                      SIGN OUT
+                    </div>
+                  </div>
+                ) : (
+                  <Link className={classes.buttonContainer} key={index} to={item.path}>
+                    <div className={classes.navItem}>{item.name}</div>
+                  </Link>
+                )
+              ) : (
                 <Link className={classes.buttonContainer} key={index} to={item.path}>
                   <div className={classes.navItem}>{item.name}</div>
                 </Link>
@@ -39,7 +52,19 @@ const Navigation = ({ isMobileMenu }) => {
         <div className={classes.navItemsContainer}>
           {NAVIGATION_ITEMS.map((item, index) => {
             if (item.isButtonLink) {
-              return (
+              return item.isUserRelated ? (
+                currentUser ? (
+                  <div className={classes.buttonContainer} onClick={() => auth.signOut()}>
+                    <div style={{ cursor: 'pointer' }} className={classes.navItem}>
+                      SIGN OUT
+                    </div>
+                  </div>
+                ) : (
+                  <Link className={classes.buttonContainer} key={index} to={item.path}>
+                    <div className={classes.navItem}>{item.name}</div>
+                  </Link>
+                )
+              ) : (
                 <Link className={classes.buttonContainer} key={index} to={item.path}>
                   <div className={classes.navItem}>{item.name}</div>
                 </Link>
@@ -74,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     width: '145px',
     height: '48px',
     borderRadius: '8px',
-    border: 'solid 2px #606060',
+    //border: 'solid 2px #606060',
     fontSize: '16px',
     fontWeight: 'bold',
     fontStretch: 'normal',
@@ -87,16 +112,16 @@ const useStyles = makeStyles((theme) => ({
     },
 
     '&:hover': {
-      border: 'solid 2px #989898',
-      '& $navItem':{
+      //border: 'solid 2px #989898',
+      '& $navItem': {
         color: '#989898',
-      }
+      },
     },
 
     '&:focus': {
-      '& $navItem':{
+      '& $navItem': {
         color: '#989898',
-      }
+      },
     },
   },
 

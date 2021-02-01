@@ -4,6 +4,8 @@ import { generatePath } from 'react-router';
 
 const Home = lazy(() => import('components/Home/Home'));
 const Shop = lazy(() => import('components/Shop/Shop'));
+const Login = lazy(() => import('components/Login/Login'));
+
 const Hats = lazy(() => import('components/Hats/Hats'));
 const Jackets = lazy(() => import('components/Jackets/Jackets'));
 const Sneakers = lazy(() => import('components/Sneakers/Sneakers'));
@@ -32,6 +34,19 @@ const routes = {
       topNavigation: {
         name: 'SHOP',
         isButtonLink: true,
+      },
+    },
+  },
+  LOGIN: {
+    id: 'LOGIN',
+    path: '/login',
+    exact: true,
+    component: Login,
+    config: {
+      topNavigation: {
+        name: 'LOGIN',
+        isButtonLink: true,
+        isUserRelated: true,
       },
     },
   },
