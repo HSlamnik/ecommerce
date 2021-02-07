@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -23,18 +24,12 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
         <div className={classes.mobileMenuContainer}>
           {NAVIGATION_ITEMS.map((item, index) => {
             if (item.isButtonLink) {
-              return item.isUserRelated ? (
-                currentUser ? (
-                  <div className={classes.buttonContainer} onClick={() => auth.signOut()}>
-                    <div style={{ cursor: 'pointer' }} className={classes.navItem}>
-                      SIGN OUT
-                    </div>
+              return item.name === 'LOGIN' && currentUser ? (
+                <div key={index} className={classes.buttonContainer} onClick={() => auth.signOut()}>
+                  <div style={{ cursor: 'pointer' }} className={classes.navItem}>
+                    SIGN OUT
                   </div>
-                ) : (
-                  <Link className={classes.buttonContainer} key={index} to={item.path}>
-                    <div className={classes.navItem}>{item.name}</div>
-                  </Link>
-                )
+                </div>
               ) : (
                 <Link className={classes.buttonContainer} key={index} to={item.path}>
                   <div className={classes.navItem}>{item.name}</div>
@@ -52,18 +47,12 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
         <div className={classes.navItemsContainer}>
           {NAVIGATION_ITEMS.map((item, index) => {
             if (item.isButtonLink) {
-              return item.isUserRelated ? (
-                currentUser ? (
-                  <div className={classes.buttonContainer} onClick={() => auth.signOut()}>
-                    <div style={{ cursor: 'pointer' }} className={classes.navItem}>
-                      SIGN OUT
-                    </div>
+              return item.name === 'LOGIN' && currentUser ? (
+                <div key={index} className={classes.buttonContainer} onClick={() => auth.signOut()}>
+                  <div style={{ cursor: 'pointer' }} className={classes.navItem}>
+                    SIGN OUT
                   </div>
-                ) : (
-                  <Link className={classes.buttonContainer} key={index} to={item.path}>
-                    <div className={classes.navItem}>{item.name}</div>
-                  </Link>
-                )
+                </div>
               ) : (
                 <Link className={classes.buttonContainer} key={index} to={item.path}>
                   <div className={classes.navItem}>{item.name}</div>
@@ -71,7 +60,7 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
               );
             }
             return (
-              <Link className={classes.navItem} key={index} to={item.path}>
+              <Link className={classes.mobileMenuItem} key={index} to={item.path}>
                 {item.name}
               </Link>
             );
@@ -185,4 +174,8 @@ Navigation.propTypes = {
   isMobileMenu: PropTypes.bool,
 };
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Navigation);

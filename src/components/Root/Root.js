@@ -9,14 +9,14 @@ import routes from 'utils/routes';
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
 
-const Root = ({ currentUser }) => {
+const Root = () => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
       <Box className={classes.container}>
         <Suspense fallback={<Loader />}>
-          <Header currentUser={currentUser} />
+          <Header />
         </Suspense>
 
         <Box className={classes.content}>

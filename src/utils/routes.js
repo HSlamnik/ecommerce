@@ -46,7 +46,6 @@ const routes = {
       topNavigation: {
         name: 'LOGIN',
         isButtonLink: true,
-        isUserRelated: true,
       },
     },
   },
