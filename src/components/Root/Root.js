@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,7 +10,7 @@ import routes from 'utils/routes';
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
 
-const Root = () => {
+const Root = ({ currentUser }) => {
   const classes = useStyles();
 
   return (
@@ -23,7 +24,13 @@ const Root = () => {
           <Suspense fallback={<Loader />}>
             <Switch>
               {Object.values(routes).map((r, i) => {
-                return <Route key={i} path={r.path} exact={r.exact} component={r.component} />;
+                return r.path === '/login' && currentUser ? (
+                  <Route key={i} path="/login">
+                    <Redirect to={{ pathname: routes.HOME.path }} />
+                  </Route>
+                ) : (
+                  <Route key={i} path={r.path} exact={r.exact} component={r.component} />
+                );
               })}
               {/* if no match for the route - redirect to home */}
               <Route path="*">
@@ -56,4 +63,8 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default Root;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Root);
