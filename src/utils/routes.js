@@ -5,6 +5,7 @@ import { generatePath } from 'react-router';
 const Home = lazy(() => import('components/Home/Home'));
 const Shop = lazy(() => import('components/Shop/Shop'));
 const Login = lazy(() => import('components/Login/Login'));
+const Cart = lazy(() => import('components/Cart/Cart'));
 
 const Hats = lazy(() => import('components/Hats/Hats'));
 const Jackets = lazy(() => import('components/Jackets/Jackets'));
@@ -48,6 +49,12 @@ const routes = {
         isButtonLink: true,
       },
     },
+  },
+  CART: {
+    id: 'CART',
+    path: '/cart',
+    exact: true,
+    component: Cart,
   },
   HATS: {
     id: 'HATS',

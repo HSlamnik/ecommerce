@@ -3,11 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { IconButton, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import { connect } from 'react-redux';
 
 import Navigation from 'components/Navigation/Navigation';
-import { ReactComponent as Logo } from 'components/Logo/Logo.svg';
+import { ReactComponent as Logo } from 'images/Logo.svg';
+import CartDropdown from 'components/Cart/CartDropdown';
 
-const Header = () => {
+const Header = ({ hidden }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const classes = useStyles({ showMobileMenu });
 
@@ -28,11 +30,13 @@ const Header = () => {
             </div>
             <div className={classes.rightContainer}>
               <Navigation />
+              {hidden ? null : <CartDropdown />}
             </div>
           </div>
         </div>
         <div className={classes.mobileMenu}>
           <Navigation isMobileMenu={true} />
+          {hidden ? null : <CartDropdown />}
         </div>
       </nav>
     </Box>
@@ -104,4 +108,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default Header;
+const mapStateToProps = ({ cart: { hidden } }) => ({
+  hidden,
+});
+
+export default connect(mapStateToProps)(Header);

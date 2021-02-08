@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { auth } from 'firebase/FirebaseUtils';
 import routes from 'utils/routes';
 
+import CartIcon from 'components/Cart/CartIcon';
+
 const Navigation = ({ isMobileMenu, currentUser }) => {
   const classes = useStyles();
   const NAVIGATION_ITEMS = Object.values(routes)
@@ -42,6 +44,9 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
               </Link>
             );
           })}
+          <div className={classes.buttonContainer} key="CART" >
+            <CartIcon />
+          </div>
         </div>
       ) : (
         <div className={classes.navItemsContainer}>
@@ -65,6 +70,9 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
               </Link>
             );
           })}
+          <div className={classes.buttonContainer} key="CART" >
+            <CartIcon />
+          </div>
         </div>
       )}
     </>
@@ -89,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     height: '48px',
     borderRadius: '8px',
     //border: 'solid 2px #606060',
-    fontSize: '16px',
+    //fontSize: '16px',
     fontWeight: 'bold',
     fontStretch: 'normal',
     fontStyle: 'normal',
@@ -118,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-flex',
     alignItems: 'center',
     borderColor: 'transparent',
-    fontSize: '20px',
+    //fontSize: '20px',
     fontWeight: 'normal',
     fontStretch: 'normal',
     fontStyle: 'normal',
@@ -141,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     padding: '0.5rem',
     borderColor: 'transparent',
-    fontSize: '16px',
+    //fontSize: '16px',
     fontWeight: 'normal',
     fontStretch: 'normal',
     fontStyle: 'normal',
