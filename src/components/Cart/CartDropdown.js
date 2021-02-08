@@ -1,11 +1,18 @@
+import { connect } from 'react-redux';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Button from 'components/Button/Button';
+import CartItem from 'components/Cart/CartItem';
 
-const CartDropdown = () => {
+const CartDropdown = ({ cartItems }) => {
   const classes = useStyles();
   return (
     <div className={classes.cartDropdown}>
-      <div className={classes.cartItems} />
+      <div className={classes.cartItems}>
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.id} item={cartItem} />
+        ))}
+      </div>
       <Button style={{ marginTop: 'auto' }}>GO TO CHECKOUT</Button>
     </div>
   );
@@ -34,4 +41,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default CartDropdown;
+const mapStateToProps = ({ cart: { cartItems } }) => ({
+  cartItems,
+});
+
+export default connect(mapStateToProps)(CartDropdown);
