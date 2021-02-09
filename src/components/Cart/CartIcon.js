@@ -3,13 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ReactComponent as ShoppingIcon } from 'images/ShoppingBag.svg';
 
 import { toggleCartHidden } from 'redux/Cart/CartActions';
+import { selectCartItemsCount } from 'redux/Cart/CartSelectors';
 
-const CartIcon = ({ toggleCartHidden }) => {
+const CartIcon = ({ toggleCartHidden, itemCount }) => {
   const classes = useStyles();
   return (
     <div className={classes.cartIcon} onClick={toggleCartHidden}>
       <ShoppingIcon className={classes.shoppingIcon} />
-      <span className={classes.itemCount}>0</span>
+      <span className={classes.itemCount}>{itemCount}</span>
     </div>
   );
 };
@@ -38,8 +39,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const mapStateToProps = (state) => ({
+  itemCount: selectCartItemsCount(state),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-export default connect(null, mapDispatchToProps)(CartIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

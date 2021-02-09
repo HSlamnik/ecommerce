@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from 'components/Button/Button';
 import CartItem from 'components/Cart/CartItem';
 
+import { selectCartItems } from 'redux/Cart/CartSelectors';
+
 const CartDropdown = ({ cartItems }) => {
   const classes = useStyles();
   return (
@@ -41,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapStateToProps)(CartDropdown);
