@@ -5,7 +5,7 @@ import { generatePath } from 'react-router';
 const Home = lazy(() => import('components/Home/Home'));
 const Shop = lazy(() => import('components/Shop/Shop'));
 const Login = lazy(() => import('components/Login/Login'));
-const Cart = lazy(() => import('components/Cart/Cart'));
+const Checkout = lazy(() => import('components/Checkout/Checkout'));
 
 const Hats = lazy(() => import('components/Hats/Hats'));
 const Jackets = lazy(() => import('components/Jackets/Jackets'));
@@ -50,11 +50,11 @@ const routes = {
       },
     },
   },
-  CART: {
-    id: 'CART',
-    path: '/cart',
+  CHECKOUT: {
+    id: 'CHECKOUT',
+    path: '/checkout',
     exact: true,
-    component: Cart,
+    component: Checkout,
   },
   HATS: {
     id: 'HATS',

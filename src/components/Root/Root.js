@@ -9,6 +9,7 @@ import routes from 'utils/routes';
 
 import Header from 'components/Header/Header';
 import Loader from 'components/Loader/Loader';
+import { selectCurrentUser } from 'redux/User/UserSelectors';
 
 const Root = ({ currentUser }) => {
   const classes = useStyles();
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+  currentUser: selectCurrentUser(state),
 });
 
 export default connect(mapStateToProps)(Root);

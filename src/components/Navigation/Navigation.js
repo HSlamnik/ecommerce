@@ -7,6 +7,7 @@ import { auth } from 'firebase/FirebaseUtils';
 import routes from 'utils/routes';
 
 import CartIcon from 'components/Cart/CartIcon';
+import { selectCurrentUser } from 'redux/User/UserSelectors';
 
 const Navigation = ({ isMobileMenu, currentUser }) => {
   const classes = useStyles();
@@ -44,7 +45,7 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
               </Link>
             );
           })}
-          <div className={classes.buttonContainer} key="CART" >
+          <div className={classes.buttonContainer} key="CART">
             <CartIcon />
           </div>
         </div>
@@ -70,7 +71,7 @@ const Navigation = ({ isMobileMenu, currentUser }) => {
               </Link>
             );
           })}
-          <div className={classes.buttonContainer} key="CART" >
+          <div className={classes.buttonContainer} key="CART">
             <CartIcon />
           </div>
         </div>
@@ -183,7 +184,7 @@ Navigation.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+  currentUser: selectCurrentUser(state),
 });
 
 export default connect(mapStateToProps)(Navigation);

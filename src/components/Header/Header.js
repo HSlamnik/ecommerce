@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Navigation from 'components/Navigation/Navigation';
 import { ReactComponent as Logo } from 'images/Logo.svg';
 import CartDropdown from 'components/Cart/CartDropdown';
+import { selectCartHidden } from 'redux/Cart/CartSelectors';
 
 const Header = ({ hidden }) => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -108,8 +109,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const mapStateToProps = ({ cart: { hidden } }) => ({
-  hidden,
+const mapStateToProps = (state) => ({
+  hidden: selectCartHidden(state),
 });
 
 export default connect(mapStateToProps)(Header);
