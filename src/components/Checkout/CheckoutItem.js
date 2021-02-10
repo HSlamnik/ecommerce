@@ -1,17 +1,30 @@
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
-const CheckoutItem = ({ cartItem: { imageUrl, price, name, quantity } }) => {
+import { clearItemFromCart, addItem, removeItem } from 'redux/Cart/CartActions';
+
+const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.checkoutItem}>
       <div className={classes.imageContainer}>
-        <img alt="item" src={imageUrl} className={classes.img} />
+        <img alt="item" src={cartItem.imageUrl} className={classes.img} />
       </div>
-      <span className={classes.name}>{name}</span>
-      <span className={classes.quantity}>{quantity}</span>
-      <span className={classes.price}>{price}</span>
-      <div className={classes.removeButton}>&#10005;</div>
+      <span className={classes.name}>{cartItem.name}</span>
+      <span className={classes.quantity}>
+        <div className={classes.arrow} onClick={() => removeItem(cartItem)}>
+          &#10094;
+        </div>
+        <span className={classes.value}>{cartItem.quantity}</span>
+        <div className={classes.arrow} onClick={() => addItem(cartItem)}>
+          &#10095;
+        </div>
+      </span>
+      <span className={classes.price}>{cartItem.price}</span>
+      <div className={classes.removeButton} onClick={() => clearItemFromCart(cartItem)}>
+        &#10005;
+      </div>
     </div>
   );
 };
@@ -47,13 +60,26 @@ const useStyles = makeStyles((theme) => ({
 
   quantity: {
     width: '23%',
-    paddingLeft: '20px',
+    display: 'flex',
   },
 
   removeButton: {
     paddingLeft: '12px',
     cursor: 'pointer',
   },
+
+  arrow: {
+    cursor: 'pointer',
+  },
+  value: {
+    margin: '0 10px',
+  },
 }));
 
-export default CheckoutItem;
+const mapStateToProps = (dispatch) => ({
+  clearItemFromCart: (cartItem) => dispatch(clearItemFromCart(cartItem)),
+  addItem: (cartItem) => dispatch(addItem(cartItem)),
+  removeItem: (cartItem) => dispatch(removeItem(cartItem)),
+});
+
+export default connect(null, mapStateToProps)(CheckoutItem);
