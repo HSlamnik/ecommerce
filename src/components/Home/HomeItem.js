@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-const MenuItem = ({ sections, history }) => {
+const HomeItem = ({ sections, history }) => {
   const classes = useStyles();
 
   return (
@@ -105,4 +105,4 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default withRouter(MenuItem);
+export default withRouter(HomeItem);

@@ -30,7 +30,7 @@ const CollectionItem = ({ item, addItem }) => {
 const useStyles = makeStyles((theme) => {
   return {
     collectionItem: {
-      width: '22%',
+      width: '22vw',
       display: 'flex',
       flexDirection: 'column',
       height: '350px',

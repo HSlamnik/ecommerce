@@ -1,13 +1,15 @@
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import CollectionItem from 'components/CollectionItem/CollectionItem';
+import CollectionItem from 'components/Collections/CollectionItem';
 
-const CollectionPreview = ({ title, items }) => {
+const CollectionPreview = ({ title, items, history, match, routeName }) => {
   const classes = useStyles();
-
   return (
     <div className={classes.collectionPreview}>
-      <h1 className={classes.title}>{title.toUpperCase()}</h1>
+      <h1 className={classes.title} onClick={() => history.push(`${match.path}/${routeName}`)}>
+        {title.toUpperCase()}
+      </h1>
       <div className={classes.preview}>
         {items
           .filter((item, idx) => idx < 4)
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => {
     title: {
       fontSize: '28px',
       marginBottom: '25px',
+      cursor: 'pointer',
     },
     preview: {
       display: 'flex',
@@ -37,4 +40,4 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default CollectionPreview;
+export default withRouter(CollectionPreview);

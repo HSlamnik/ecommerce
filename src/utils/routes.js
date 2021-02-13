@@ -29,7 +29,7 @@ const routes = {
   SHOP: {
     id: 'SHOP',
     path: '/shop',
-    exact: true,
+    exact: false,
     component: Shop,
     config: {
       topNavigation: {
