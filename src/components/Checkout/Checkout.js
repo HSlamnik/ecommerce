@@ -5,6 +5,7 @@ import { selectCartItems, selectCartTotal } from 'redux/Cart/CartSelectors';
 import { makeStyles } from '@material-ui/core/styles';
 
 import CheckoutItem from 'components/Checkout/CheckoutItem';
+import StripeButton from 'components/StripeButton/StripeButton';
 
 const Checkout = ({ cartItems, total }) => {
   const classes = useStyles();
@@ -30,6 +31,14 @@ const Checkout = ({ cartItems, total }) => {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <div className={classes.total}>TOTAL: ${total}</div>
+      <div className={classes.testWarning}>
+        *Please use the following test Credit Card for payments*
+        <br />
+        4242 4242 4242 4242 - Expiry: 01/22 - CVV: 123
+      </div>
+      <div className={classes.stripe}>
+        <StripeButton price={total} />
+      </div>
     </div>
   );
 };
@@ -65,6 +74,17 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '30px',
     marginLeft: 'auto',
     fontSize: '36px',
+  },
+
+  testWarning: {
+    textAlign: 'center',
+    marginTop: '40px',
+    fontSize: '24px',
+    color: 'red',
+  },
+  stripe: {
+    marginLeft: 'auto',
+    marginTop: '50px',
   },
 }));
 
