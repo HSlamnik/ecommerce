@@ -23,7 +23,6 @@ const App = ({ setCurrentUser }) => {
     });
 
     return () => {
-      console.log('Unsubscribing');
       unsubscribeFromAuth();
     };
   }, [setCurrentUser]);

@@ -7,12 +7,6 @@ const Shop = lazy(() => import('components/Shop/Shop'));
 const Login = lazy(() => import('components/Login/Login'));
 const Checkout = lazy(() => import('components/Checkout/Checkout'));
 
-const Hats = lazy(() => import('components/Hats/Hats'));
-const Jackets = lazy(() => import('components/Jackets/Jackets'));
-const Sneakers = lazy(() => import('components/Sneakers/Sneakers'));
-const Womens = lazy(() => import('components/Womens/Womens'));
-const Mens = lazy(() => import('components/Mens/Mens'));
-
 const routes = {
   HOME: {
     id: 'HOME',
@@ -56,36 +50,7 @@ const routes = {
     exact: true,
     component: Checkout,
   },
-  HATS: {
-    id: 'HATS',
-    path: '/hats',
-    exact: true,
-    component: Hats,
-  },
-  JACKETS: {
-    id: 'JACKETS',
-    path: '/jackets',
-    exact: true,
-    component: Jackets,
-  },
-  SNEAKERS: {
-    id: 'SNEAKERS',
-    path: '/sneakers',
-    exact: true,
-    component: Sneakers,
-  },
-  WOMENS: {
-    id: 'WOMENS',
-    path: '/womens',
-    exact: true,
-    component: Womens,
-  },
-  MENS: {
-    id: 'MENS',
-    path: '/mens',
-    exact: true,
-    component: Mens,
-  },
+
 };
 
 export const flattenRoutes = (routes) =>

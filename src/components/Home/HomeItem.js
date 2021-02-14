@@ -1,9 +1,9 @@
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-const HomeItem = ({ sections, history }) => {
+const HomeItem = ({ sections, history, match }) => {
   const classes = useStyles();
-
+  
   return (
     <div className={classes.home}>
       <div className={classes.menu}>
@@ -14,7 +14,9 @@ const HomeItem = ({ sections, history }) => {
             style={{
               height: isWideDiv && '380px',
             }}
-            onClick={() => history.push(`${linkUrl}`)}
+            onClick={() => {
+              history.push(`${linkUrl}`);
+            }}
           >
             <div className={classes.imageBackground} style={{ backgroundImage: `url(${imageUrl})` }} />
             <div className={classes.content}>

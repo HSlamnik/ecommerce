@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CollectionItem from 'components/Collections/CollectionItem';
 import { selectCollection } from 'redux/Shop/ShopSelectors';
 
-const Collection = ({ collection }) => {
+const Collection = ({ collection, match }) => {
   const classes = useStyles();
 
   return (
@@ -40,12 +40,11 @@ const useStyles = makeStyles((theme) => {
         marginBottom: '30px',
       },
     },
-
   };
 });
 
 const mapStateToProps = (state, ownProps) => ({
-  collection: selectCollection(ownProps.match.params.categoryId)(state),
+  collection: selectCollection(ownProps.match.params.collectionId)(state),
 });
 
 export default connect(mapStateToProps)(Collection);
