@@ -59,7 +59,11 @@ const useStyles = makeStyles((theme) => {
     content: {
       flex: '1 1 0%',
       backgroundColor: '#ffffff',
-      padding: '20px 60px',
+      padding: '20px 40px',
+
+      '@media (max-width: 800px)': {
+        padding: '10px',
+      },
     },
   };
 });

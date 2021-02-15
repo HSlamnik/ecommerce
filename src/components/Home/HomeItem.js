@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const HomeItem = ({ sections, history, match }) => {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.home}>
       <div className={classes.menu}>
@@ -11,9 +11,6 @@ const HomeItem = ({ sections, history, match }) => {
           <div
             key={id}
             className={classes.menuItem}
-            style={{
-              height: isWideDiv && '380px',
-            }}
             onClick={() => {
               history.push(`${linkUrl}`);
             }}
@@ -35,7 +32,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '20px 80px',
+    padding: '20px',
   },
   menu: {
     width: '100%',
@@ -58,8 +55,19 @@ const useStyles = makeStyles(() => ({
       marginRight: '7.5px',
     },
 
+    '&:nth-last-child(2)': {
+      height: '380px',
+      '@media (max-width: 800px)': {
+        height: '200px',
+      },
+    },
+
     '&:last-child': {
       marginLeft: '7.5px',
+      height: '380px',
+      '@media (max-width: 800px)': {
+        height: '200px',
+      },
     },
 
     '&:hover': {
@@ -73,6 +81,10 @@ const useStyles = makeStyles(() => ({
       '& $content': {
         opacity: '0.9',
       },
+    },
+
+    '@media (max-width: 800px)': {
+      height: '200px',
     },
   },
 

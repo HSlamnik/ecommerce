@@ -47,6 +47,19 @@ const useStyles = makeStyles((theme) => {
           display: 'flex',
         },
       },
+
+      '@media (max-width: 800px)': {
+        width: '40vw',
+        '&:hover': {
+          '& $image': {
+            opacity: 'unset',
+          },
+
+          '& $customButton': {
+            opacity: 'unset',
+          },
+        },
+      },
     },
     image: {
       width: '100%',
@@ -95,6 +108,13 @@ const useStyles = makeStyles((theme) => {
         backgroundColor: 'white',
         color: 'black',
         border: '1px solid black',
+      },
+
+      '@media (max-width: 800px)': {
+        display: 'block',
+        opacity: '0.9',
+        minWidth: 'unset',
+        padding: '0 10px',
       },
     },
   };

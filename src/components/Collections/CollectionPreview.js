@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       flexDirection: 'column',
       marginBottom: '30px',
+
+      '@media (max-width: 800px)': {
+        alignItems: 'center',
+      },
     },
     title: {
       fontSize: '28px',
@@ -36,6 +40,12 @@ const useStyles = makeStyles((theme) => {
     preview: {
       display: 'flex',
       justifyContent: 'space-between',
+
+      '@media (max-width: 800px)': {
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gridGap: '15px',
+      },
     },
   };
 });
